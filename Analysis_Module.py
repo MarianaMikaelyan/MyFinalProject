@@ -7,24 +7,24 @@ class AnalysisManager:
         self.purchase_manager = purchase_manager
         self.sales_manager = sales_manager
 
-    # Function to calculate total sales
+    # მთლიანი გაყიდვების კალკულაცია
     def calculate_total_sales(self):
         total_sales = sum(sale['Price'] * sale['Quantity'] for sale in self.sales_manager.sales)
         return total_sales
 
-    # Function to calculate total purchases
+    # მთლიანი შეძენების კალკულაცია
     def calculate_total_purchases(self):
         total_purchases = sum(purchase['Cost'] * purchase['Quantity'] for purchase in self.purchase_manager.purchases)
         return total_purchases
 
-    # Function to calculate profit
+    # მთლიანი მოგება-ზარალის კალკულაცია
     def calculate_profit(self):
         total_sales = self.calculate_total_sales()
         total_purchases = self.calculate_total_purchases()
         profit = total_sales - total_purchases
         return profit
 
-    # Function to calculate inventory status
+    # პროდუქციის მახასიათებლების ანალიზი.
     def calculate_inventory_status(self):
         inventory = {}
         for product in self.product_manager.products:
@@ -48,7 +48,7 @@ class AnalysisManager:
 
         return inventory
 
-    # Function to display analysis results
+
     def display_analysis(self):
         total_sales = self.calculate_total_sales()
         total_purchases = self.calculate_total_purchases()
@@ -64,7 +64,7 @@ class AnalysisManager:
             print(f"Product Code: {product_code}, Name: {details['Product Name']}, Quantity: {details['Quantity']}, Unit: {details['Unit']}, Category: {details['Category Name']}")
         print("-----------------------")
 
-    # Function to save analysis data to CSV
+    # ანალიზის შენახვა ბაზაში.
     def save_analysis(self, filename='analysis.csv'):
         total_sales = self.calculate_total_sales()
         total_purchases = self.calculate_total_purchases()
